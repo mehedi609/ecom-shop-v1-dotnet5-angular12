@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../environments/environment';
-import { IProduct } from './shared/models/product';
-import { IPagination } from './shared/models/pagination';
 
 @Component({
   selector: 'app-root',
@@ -11,18 +7,8 @@ import { IPagination } from './shared/models/pagination';
 })
 export class AppComponent implements OnInit {
   title = 'client';
-  products: IProduct[];
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.http.get(`${environment.apiUrl}/products?pageSize=50`).subscribe(
-      (res: IPagination) => {
-        this.products = res.data;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
+  ngOnInit(): void {}
 }

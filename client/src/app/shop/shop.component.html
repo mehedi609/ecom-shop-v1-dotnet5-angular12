@@ -1,1 +1,101 @@
-<p>shop works!</p>
+<div class="row">
+  <div class="col-md-3">
+    <h5 class="text-info h3 mb-3">Sort</h5>
+    <div class="mb-5">
+      <select class="form-control" (change)="onSortSelected($event)">
+        <option *ngFor="let sort of sortOptions" [value]="sort.value">
+          {{ sort.name }}
+        </option>
+      </select>
+    </div>
+
+    <h5 class="text-info h3 mb-3">Brands</h5>
+    <div class="list-group mb-5">
+      <button
+        type="button"
+        *ngFor="let brand of brands"
+        class="list-group-item list-group-item-action"
+        [class.active]="brand.id === shopParams.brandId"
+        (click)="onBrandSelected(brand.id)"
+      >
+        {{ brand.name }}
+      </button>
+    </div>
+
+    <h5 class="text-info h3 mb-3">Types</h5>
+    <div class="list-group">
+      <button
+        type="button"
+        *ngFor="let type of types"
+        class="list-group-item list-group-item-action"
+        [class.active]="type.id === shopParams.typeId"
+        (click)="onTypeSelected(type.id)"
+      >
+        {{ type.name }}
+      </button>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <div class="d-flex justify-content-between align-items-center pb-3">
+      <ng-container
+        *ngIf="
+          totalCount && totalCount > 0;
+          then resultsFound;
+          else noResultFound
+        "
+      ></ng-container>
+
+      <ng-template #resultsFound>
+        <header>
+          Showing
+          <strong
+            >{{ (shopParams.pageNumber - 1) * shopParams.pageSize + 1 }} -
+            {{
+              shopParams.pageNumber * shopParams.pageSize > totalCount
+                ? totalCount
+                : shopParams.pageNumber * shopParams.pageSize
+            }}</strong
+          >
+          of <strong>{{ totalCount }}</strong> Results
+        </header>
+      </ng-template>
+
+      <ng-template #noResultFound>
+        <header>There are <strong>0</strong> results for this filter</header>
+      </ng-template>
+
+      <div class="form-inline mt-2">
+        <input
+          type="text"
+          class="form-control mr-2"
+          style="width: 25rem"
+          placeholder="Search"
+        />
+        <button class="btn btn-outline-info my-2">Search</button>
+        <button class="btn btn-outline-warning ml-2">Reset</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let product of products">
+        <app-product-item [product]="product"></app-product-item>
+      </div>
+    </div>
+
+    <ng-template #resultsFound>
+      <div class="d-flex justify-content-center">
+        <pagination
+          [boundaryLinks]="true"
+          [totalItems]="totalCount"
+          (pageChanged)="onPageChanged($event)"
+          [itemsPerPage]="shopParams.pageSize"
+          previousText="&lsaquo;"
+          nextText="&rsaquo;"
+          firstText="&laquo;"
+          lastText="&raquo;"
+        >
+        </pagination>
+      </div>
+    </ng-template>
+  </div>
+</div>
