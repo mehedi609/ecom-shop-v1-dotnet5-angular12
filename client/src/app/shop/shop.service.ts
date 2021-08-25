@@ -17,13 +17,17 @@ export class ShopService {
 
   getProducts(shopParams: ShopParams) {
     let params = new HttpParams();
-    const { brandId, typeId, sort, pageSize, pageNumber } = shopParams;
+    const { brandId, typeId, sort, pageSize, pageNumber, search } = shopParams;
     if (brandId !== 0) {
       params = params.append('brandId', brandId.toString());
     }
 
     if (typeId !== 0) {
       params = params.append('typeId', typeId.toString());
+    }
+
+    if (search) {
+      params = params.append('search', search);
     }
 
     params = params.append('sort', sort);
