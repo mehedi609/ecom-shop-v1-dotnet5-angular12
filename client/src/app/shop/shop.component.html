@@ -38,32 +38,11 @@
 
   <div class="col-md-9">
     <div class="d-flex justify-content-between align-items-center pb-3">
-      <ng-container
-        *ngIf="
-          totalCount && totalCount > 0;
-          then resultsFound;
-          else noResultFound
-        "
-      ></ng-container>
-
-      <ng-template #resultsFound>
-        <header>
-          Showing
-          <strong
-            >{{ (shopParams.pageNumber - 1) * shopParams.pageSize + 1 }} -
-            {{
-              shopParams.pageNumber * shopParams.pageSize > totalCount
-                ? totalCount
-                : shopParams.pageNumber * shopParams.pageSize
-            }}</strong
-          >
-          of <strong>{{ totalCount }}</strong> Results
-        </header>
-      </ng-template>
-
-      <ng-template #noResultFound>
-        <header>There are <strong>0</strong> results for this filter</header>
-      </ng-template>
+      <app-paging-header
+        [pageNumber]="shopParams.pageNumber"
+        [pageSize]="shopParams.pageSize"
+        [totalCount]="totalCount"
+      ></app-paging-header>
 
       <div class="form-inline mt-2">
         <input
@@ -82,20 +61,15 @@
       </div>
     </div>
 
-    <ng-template #resultsFound>
-      <div class="d-flex justify-content-center">
-        <pagination
-          [boundaryLinks]="true"
-          [totalItems]="totalCount"
-          (pageChanged)="onPageChanged($event)"
-          [itemsPerPage]="shopParams.pageSize"
-          previousText="&lsaquo;"
-          nextText="&rsaquo;"
-          firstText="&laquo;"
-          lastText="&raquo;"
-        >
-        </pagination>
-      </div>
-    </ng-template>
+    <div
+      class="d-flex justify-content-center"
+      *ngIf="totalCount && totalCount > 0"
+    >
+      <app-pager
+        [totalCount]="totalCount"
+        [pageSize]="shopParams.pageSize"
+        (pageChanged)="onPageChanged($event)"
+      ></app-pager>
+    </div>
   </div>
 </div>
