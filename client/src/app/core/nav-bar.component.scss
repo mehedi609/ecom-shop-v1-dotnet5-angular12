@@ -11,14 +11,16 @@
   right: 32px;
 }
 
-a {
-  color: #17141f;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
-  &:hover {
-    color: #fd7e14;
-  }
-  &.active {
-    color: #fd7e14;
+nav {
+  a {
+    color: #17141f;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      color: #fd7e14;
+    }
+    &.active {
+      color: #fd7e14;
+    }
   }
 }
