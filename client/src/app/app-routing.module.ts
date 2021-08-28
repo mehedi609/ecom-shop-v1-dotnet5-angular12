@@ -9,6 +9,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./shop/shop.module').then((mod) => mod.ShopModule),
   },
+  {
+    path: 'test-error',
+    loadChildren: () =>
+      import('./test-error/test-error.module').then(
+        (mod) => mod.TestErrorModule
+      ),
+  },
   { path: '**', pathMatch: 'full', redirectTo: '' },
 ];
 
