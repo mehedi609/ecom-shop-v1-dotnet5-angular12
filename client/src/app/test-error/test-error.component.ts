@@ -7,6 +7,8 @@ import { TestErrorService } from './test-error.service';
   styleUrls: ['./test-error.component.scss'],
 })
 export class TestErrorComponent implements OnInit {
+  validationErrors: string[];
+
   constructor(private testErrorService: TestErrorService) {}
 
   ngOnInit(): void {}
@@ -51,6 +53,7 @@ export class TestErrorComponent implements OnInit {
       },
       (error) => {
         console.log(error);
+        this.validationErrors = error;
       }
     );
   }

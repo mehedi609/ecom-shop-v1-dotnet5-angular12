@@ -16,7 +16,6 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-
     CoreModule,
     HomeModule,
   ],
