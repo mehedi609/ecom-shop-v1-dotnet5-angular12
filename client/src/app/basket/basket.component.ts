@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IBasket } from '../shared/models/basket';
-import { BasketService } from '../basket/basket.service';
+import { BasketService } from './basket.service';
 
 @Component({
-  selector: 'app-nav-bar',
-  templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.scss'],
+  selector: 'app-basket',
+  templateUrl: './basket.component.html',
+  styleUrls: ['./basket.component.scss'],
 })
-export class NavBarComponent implements OnInit {
+export class BasketComponent implements OnInit {
   basket$: Observable<IBasket>;
 
   constructor(private basketService: BasketService) {}
