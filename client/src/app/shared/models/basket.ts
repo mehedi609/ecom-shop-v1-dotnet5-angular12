@@ -33,4 +33,8 @@ export interface IBasketService {
   setBasket(basket: IBasket): Subscription;
   getCurrentBasketValue(): IBasket;
   addItemToBasket(item: IProduct, quantity: number);
+  incrementItemQuantity(item: IBasketItem): void;
+  decrementItemQuantity(item: IBasketItem): void;
+  removeItemFromBasket(item: IBasketItem): void;
+  deleteBasket(basket: IBasket): void;
 }
