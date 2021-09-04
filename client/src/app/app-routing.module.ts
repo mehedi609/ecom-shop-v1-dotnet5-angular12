@@ -35,6 +35,12 @@ const routes: Routes = [
     data: { breadcrumb: 'Checkout' },
   },
   {
+    path: 'account',
+    loadChildren: () =>
+      import('./account/account.module').then((mod) => mod.AccountModule),
+    data: { breadcrumb: { skip: true } },
+  },
+  {
     path: 'test-error',
     loadChildren: () =>
       import('./test-error/test-error.module').then(
