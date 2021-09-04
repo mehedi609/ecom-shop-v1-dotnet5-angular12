@@ -92,7 +92,7 @@ export class BasketService implements IBasketService {
   }
 
   deleteBasket(basket: IBasket) {
-    this.http.delete(`${this.baseUrl}/basket?=${basket.id}`).subscribe(
+    this.http.delete(`${this.baseUrl}/basket?id=${basket.id}`).subscribe(
       () => {
         this.basketSource.next(null);
         this.basketTotalSource.next(null);
