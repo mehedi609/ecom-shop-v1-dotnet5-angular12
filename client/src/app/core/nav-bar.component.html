@@ -56,7 +56,51 @@
     </ng-template>
 
     <ng-template #loggedIn>
-      <a href="#">{{ (currentUser$ | async).displayName }}</a>
+      <div class="btn-group" dropdown>
+        <button
+          id="button-animated"
+          dropdownToggle
+          type="button"
+          class="btn btn-primary dropdown-toggle"
+          aria-controls="dropdown-animated"
+        >
+          Welcome {{ (currentUser$ | async).displayName }}
+          <span class="caret"></span>
+        </button>
+        <ul
+          id="dropdown-animated"
+          *dropdownMenu
+          class="dropdown-menu dropdown-menu-right"
+          role="menu"
+          aria-labelledby="button-animated"
+        >
+          <li role="menuitem">
+            <a
+              routerLink="/basket"
+              class="dropdown-item d-flex align-items-center py-2"
+            >
+              <i class="fa fa-shopping-cart mr-3"></i> View Basket
+            </a>
+          </li>
+          <li role="menuitem">
+            <a
+              routerLink="/orders"
+              class="dropdown-item d-flex align-items-center py-2"
+            >
+              <i class="fa fa-history mr-3"></i> View Orders
+            </a>
+          </li>
+          <li class="divider dropdown-divider"></li>
+          <li role="menuitem">
+            <button
+              class="dropdown-item d-flex align-items-center py-2"
+              (click)="logout()"
+            >
+              <i class="fa fa-sign-out mr-3"></i> Logout
+            </button>
+          </li>
+        </ul>
+      </div>
     </ng-template>
   </div>
 </div>
