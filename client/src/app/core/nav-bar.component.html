@@ -41,11 +41,22 @@
         {{ basket.items.length }}
       </div>
     </a>
-    <a class="btn btn-outline-success mr-3" routerLink="/account/login"
-      >Login</a
-    >
-    <a class="btn btn-outline-primary" routerLink="/account/register"
-      >Sign up</a
-    >
+
+    <ng-container
+      *ngIf="(currentUser$ | async) === null; then notLoggedIn; else loggedIn"
+    ></ng-container>
+
+    <ng-template #notLoggedIn>
+      <a class="btn btn-outline-success mr-3" routerLink="/account/login"
+        >Login</a
+      >
+      <a class="btn btn-outline-primary" routerLink="/account/register"
+        >Sign up</a
+      >
+    </ng-template>
+
+    <ng-template #loggedIn>
+      <a href="#">{{ (currentUser$ | async).displayName }}</a>
+    </ng-template>
   </div>
 </div>
