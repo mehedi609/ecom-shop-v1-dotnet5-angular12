@@ -28,8 +28,8 @@ export class BasketService implements IBasketService {
     return this.http.get<IBasket>(`${this.baseUrl}/basket?id=${id}`).pipe(
       map((res) => {
         this.basketSource.next(res);
-        console.log('Basket Value');
-        console.log(this.getCurrentBasketValue());
+        // console.log('Basket Value');
+        // console.log(this.getCurrentBasketValue());
         this.calculateTotals();
       })
     );
@@ -38,7 +38,7 @@ export class BasketService implements IBasketService {
   setBasket(basket: IBasket) {
     return this.http.post<IBasket>(`${this.baseUrl}/basket`, basket).subscribe(
       (res) => {
-        console.log(res);
+        // console.log(res);
         this.basketSource.next(res);
         this.calculateTotals();
       },
