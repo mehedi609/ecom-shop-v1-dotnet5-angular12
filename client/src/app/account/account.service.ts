@@ -65,6 +65,6 @@ export class AccountService {
   }
 
   checkEmailExists(email: string) {
-    return this.http.post(`${this.baseUrl}/account/emailexists`, email);
+    return this.http.get(`${this.baseUrl}/account/emailexists?email=${email}`);
   }
 }

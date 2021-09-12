@@ -13,8 +13,13 @@
     id="{{ label }}"
     class="form-control"
     placeholder="{{ label }}"
+    autocomplete="off"
     #input
   />
+  <div
+    *ngIf="controlDir?.control?.status === 'PENDING'"
+    class="fa fa-spinner fa-spin loader"
+  ></div>
   <label for="{{ label }}">{{ label }}</label>
   <div
     class="invalid-feedback"
@@ -33,7 +38,17 @@
     </span>
   </div>
 
-  <!--<div class="invalid-feedback d-block" *ngIf="(controlDir && controlDir.control && !controlDir.control.valid && controlDir.control.dirty)">
-    <span *ngIf="controlDir.control.errors?.emailExists">Email address is in use</span>
-  </div>-->
+  <div
+    class="invalid-feedback d-block"
+    *ngIf="
+      controlDir &&
+      controlDir.control &&
+      !controlDir.control.valid &&
+      controlDir.control.dirty
+    "
+  >
+    <span *ngIf="controlDir.control.errors?.emailExists">
+      <strong>Email address is in use</strong>
+    </span>
+  </div>
 </div>

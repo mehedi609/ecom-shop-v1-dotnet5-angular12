@@ -25,7 +25,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           if (err.status === 400) {
             const { message, statusCode, errors }: IError = err.error;
             if (errors) {
-              throw errors;
+              throw err.error;
             } else {
               this.toastr.error(message, statusCode);
             }

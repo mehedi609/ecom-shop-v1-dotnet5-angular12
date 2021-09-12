@@ -1,14 +1,7 @@
-<div class="d-flex justify-content-center">
-  <div class="col-12">
-    <form
-      class="form-signin"
-      autocomplete="off"
-      [formGroup]="loginForm"
-      (ngSubmit)="onSubmit()"
-    >
-      <div class="text-center mb-4">
-        <h1 class="h3 mb-3 font-weight-normal">Login</h1>
-      </div>
+<div class="row d-flex justify-content-center">
+  <div class="col-6">
+    <form autocomplete="off" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h1 class="h3 mb-4 font-weight-normal text-center">Login</h1>
 
       <app-text-input
         formControlName="email"

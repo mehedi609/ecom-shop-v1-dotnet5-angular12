@@ -7,7 +7,7 @@ import { TestErrorService } from './test-error.service';
   styleUrls: ['./test-error.component.scss'],
 })
 export class TestErrorComponent implements OnInit {
-  validationErrors: string[];
+  validationErrors: any;
 
   constructor(private testErrorService: TestErrorService) {}
 
@@ -53,7 +53,7 @@ export class TestErrorComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        this.validationErrors = error;
+        this.validationErrors = error.errors;
       }
     );
   }
