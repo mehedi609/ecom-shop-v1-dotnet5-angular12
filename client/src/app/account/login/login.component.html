@@ -10,29 +10,22 @@
         <h1 class="h3 mb-3 font-weight-normal">Login</h1>
       </div>
 
-      <div class="form-label-group">
-        <input
-          type="email"
-          id="email"
-          formControlName="email"
-          class="form-control"
-          placeholder="Email address"
-        />
-        <label for="email">Email Address</label>
-      </div>
+      <app-text-input
+        formControlName="email"
+        [type]="'email'"
+        [label]="'Email Address'"
+      ></app-text-input>
+      <app-text-input
+        formControlName="password"
+        [type]="'password'"
+        [label]="'Password'"
+      ></app-text-input>
 
-      <div class="form-label-group">
-        <input
-          type="password"
-          id="password"
-          formControlName="password"
-          class="form-control"
-          placeholder="Password"
-        />
-        <label for="password">Password</label>
-      </div>
-
-      <button class="btn btn-lg btn-block btn-primary" type="submit">
+      <button
+        class="btn btn-lg btn-block btn-primary"
+        type="submit"
+        [disabled]="loginForm.invalid"
+      >
         Sign in
       </button>
     </form>
