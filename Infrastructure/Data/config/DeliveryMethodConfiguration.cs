@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.Data.config
 {
-    public class DeliveryMethodConiguration : IEntityTypeConfiguration<DeliveryMethod>
+    public class DeliveryMethodConfiguration : IEntityTypeConfiguration<DeliveryMethod>
     {
         public void Configure(EntityTypeBuilder<DeliveryMethod> builder)
         {
